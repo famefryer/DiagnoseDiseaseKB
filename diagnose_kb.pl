@@ -42,8 +42,10 @@ getMedicine(Disease) :-
     foreach(cureBy(Disease,X),write(X)->write(' '))->
     write(')').
     
-
-diagnosis(Symptom) :- 
+    # - ตรีมิตร์ ควงพริ้ว since 1997 -
+diagnosis(Symptom) :-
     (symptomOf(cold, Symptom) -> writeln('You have cold.')->getMedicine(cold));
     (symptomOf(diarrhea, Symptom) -> writeln('You have diarrhea.')->getMedicine(diarrhea)).
+splitTest(X) :-
+    split(X,"-",ListOfSymptom) -> writeln(ListOfSymptom).
 
