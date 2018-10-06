@@ -1,13 +1,13 @@
-/* animal.pro
-  animal identification game.  
 
-    start with ?- go.     */
-
-go :- hypothesize(Disease),
+start :- 
+      writeln('Welcome to disease diagnosis system.'),
+      writeln('Please answers quetions with yes or no.'),
+      hypothesize(Disease),
       nl,
       write('You might have this disease: '),
       write(Disease),
       nl,
+      getMedicine(Disease),
       undo.
 
 
@@ -18,7 +18,7 @@ hypothesize(diarrhea) :- diarrhea, !.
 # hypothesize(cholera)  :- cholera.
 hypothesize(unknown).             /* no diagnosis */
 
-/* animal identification rules */
+/* disease identification rules */
 # flu :- cold,
 #        verify(body_aches).
 # cholera :- diarrhea,
@@ -34,23 +34,9 @@ diarrhea :- verify(watery_stools),
             verify(abdominal_pain),
             verify(fever).
 
-# mammal    :- verify(has_hair), !.
-# mammal    :- verify(gives_milk).
-# bird      :- verify(has_feathers), !.
-# bird      :- verify(flys), 
-#              verify(lays_eggs).
-# carnivore :- verify(eats_meat), !.
-# carnivore :- verify(has_pointed_teeth), 
-#              verify(has_claws),
-#              verify(has_forward_eyes).
-# ungulate :- mammal, 
-#             verify(has_hooves), !.
-# ungulate :- mammal, 
-#             verify(chews_cud).
-
 /* how to ask questions */
 ask(Question) :-
-    write('Does you have the following symptoms: '),
+    write('Does you have the following symptom: '),
     write(Question),
     write('? '),
     nl,
@@ -72,6 +58,17 @@ verify(S) :-
      ->
      fail ;
      ask(S))).
+
+
+cureBy(cold,tiffy).
+cureBy(cold,tylenol).
+cureBy(diarrhea,carbon).
+cureBy(diarrhea,disento).
+
+getMedicine(Disease) :-
+    write('Medicines : (')->
+    foreach(cureBy(Disease,X),write(X)->write(','))->
+    write(')').
 
 undo :- retract(yes(_)),fail. 
 undo :- retract(no(_)),fail.

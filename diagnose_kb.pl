@@ -34,10 +34,6 @@ cureBy(diarrhea,carbon).
 cureBy(diarrhea,disento).
 
 getMedicine(Disease) :-
-%     (cureBy(Disease, tiffy)) -> writeln('You should get Tiffy');
-%     (cureBy(Disease, tylenol) -> writeln('You should get tylenol');
-%     (cureBy(Disease, carbon) -> writeln('You should get carbon');
-%     (cureBy(Disease, disento) -> writeln('You should get disento');.
     write('Medicines : (')->
     foreach(cureBy(Disease,X),write(X)->write(' '))->
     write(')').
@@ -46,6 +42,18 @@ getMedicine(Disease) :-
 diagnosis(Symptom) :-
     (symptomOf(cold, Symptom) -> writeln('You have cold.')->getMedicine(cold));
     (symptomOf(diarrhea, Symptom) -> writeln('You have diarrhea.')->getMedicine(diarrhea)).
-splitTest(X) :-
-    split(X,"-",ListOfSymptom) -> writeln(ListOfSymptom).
 
+askUser(Disease,Symptom) :-
+    write('You have '),
+    write(Symptom),
+    writeln('(yes or no)',
+    read(Res).
+
+verify() :-
+   writeln('asd').
+
+start :- 
+    [head] = List,
+    writeln('Please Input your symptom?'),
+    read(Res),
+    member(Res,List)->writeln(List).
