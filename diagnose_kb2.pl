@@ -4,6 +4,7 @@
     start with ?- go.     */
 
 go :- hypothesize(Disease),
+      nl,
       write('You might have this disease: '),
       write(Disease),
       nl,
@@ -13,26 +14,26 @@ go :- hypothesize(Disease),
 /* hypotheses to be tested */
 hypothesize(cold)     :- cold, !.
 hypothesize(diarrhea) :- diarrhea, !.
-hypothesize(flu)      :- flu, !.
-hypothesize(cholera)  :- cholera, !.
+# hypothesize(flu)      :- flu.
+# hypothesize(cholera)  :- cholera.
 hypothesize(unknown).             /* no diagnosis */
 
 /* animal identification rules */
-flu :- cold,
-       verify(body_aches).
-cholera :- diarrhea,
-           verify(nausea).
-
-/* classification rules */
-cold :- verify(runny_nose), !.
-cold :- verify(headache),
+# flu :- cold,
+#        verify(body_aches).
+# cholera :- diarrhea,
+#            verify(nausea).
+cold :- verify(runny_nose),
+        verify(headache),
         verify(fever),
         verify(cough),
         verify(sore_throat).
-diarrhea :- verify(watery stools), !.
-diarrhea :- verify(bloating),
+
+diarrhea :- verify(watery_stools),
+            verify(bloating),
             verify(abdominal_pain),
             verify(fever).
+
 # mammal    :- verify(has_hair), !.
 # mammal    :- verify(gives_milk).
 # bird      :- verify(has_feathers), !.
@@ -52,6 +53,7 @@ ask(Question) :-
     write('Does you have the following symptoms: '),
     write(Question),
     write('? '),
+    nl,
     read(Response),
     nl,
     ( (Response == yes ; Response == y)
@@ -71,7 +73,6 @@ verify(S) :-
      fail ;
      ask(S))).
 
-/* undo all yes/no assertions */
 undo :- retract(yes(_)),fail. 
 undo :- retract(no(_)),fail.
 undo.
