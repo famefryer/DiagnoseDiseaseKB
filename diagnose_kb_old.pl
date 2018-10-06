@@ -43,12 +43,6 @@ diagnosis(Symptom) :-
     (symptomOf(cold, Symptom) -> writeln('You have cold.')->getMedicine(cold));
     (symptomOf(diarrhea, Symptom) -> writeln('You have diarrhea.')->getMedicine(diarrhea)).
 
-askUser(Disease,Symptom) :-
-    write('You have '),
-    write(Symptom),
-    writeln('(yes or no)',
-    read(Res).
-
 verify() :-
    writeln('asd').
 
