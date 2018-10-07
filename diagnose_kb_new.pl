@@ -30,7 +30,8 @@ cold :- verify(headache),
         verify(cough),
         verify(sore_throat).
 
-migraine :- verify(oneside_headache),
+migraine :- verify(headache),
+            verify(oneside_headache),
             verify(throbbing_pain_headache).
 
 diarrhea :- verify(watery_stools),
@@ -45,6 +46,7 @@ aphthous_ulcer :- verify(hurt_in_mouth),
 muscular_pain :- verify(muscle_strain),
                  verify(legache),
                  verify(armache).
+                 
 skin_scratch :- verify(pain_at_wound),
                 verify(blood_at_wound).
 
@@ -58,7 +60,6 @@ dyspepsia :- verify(upper_abdominal_pain),
              verify(abdominal_distention),
              verify(bloating).
 
-                      
 /* how to ask questions */
 ask(Question) :-
     write('Does you have the following symptom: '),
