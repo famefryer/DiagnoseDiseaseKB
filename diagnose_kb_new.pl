@@ -28,14 +28,23 @@ cold :- verify(headache),
         verify(runny_nose),
         verify(fever),
         verify(cough),
+        verify(body_ache),
+        verify(sneezing),
+        verify(malaise),
         verify(sore_throat).
 
 migraine :- verify(headache),
+            verify(vomiting),
+            verify(fainting),
             verify(oneside_headache),
+            verify(blurred_vision),
             verify(throbbing_pain_headache).
 
 diarrhea :- verify(watery_stools),
             verify(bloating),
+            verify(abdominal_cramps),
+            verify(nausea),
+            verify(bowel_movement),
             verify(abdominal_pain),
             verify(fever).
 
@@ -45,12 +54,21 @@ aphthous_ulcer :- verify(hurt_in_mouth),
 
 muscular_pain :- verify(muscle_strain),
                  verify(legache),
+                 verify(claudication),
+                 verify(dystonia),
                  verify(armache).
                  
 skin_scratch :- verify(pain_at_wound),
+                verify(redness_wound),
+                verify(fever),
+                verify(swelling_wound),
                 verify(blood_at_wound).
 
 motion_sick :- verify(dizziness),
+               verify(feel_uneasiness),
+               verify(cold_sweats),
+               verify(increased_saliva),
+               verify(nausea),
                verify(vomiting).
 
 urticaria :- verify(skin_colored_welts),
@@ -58,6 +76,9 @@ urticaria :- verify(skin_colored_welts),
 
 dyspepsia :- verify(upper_abdominal_pain),
              verify(abdominal_distention),
+             verify(abdominal_fullness),
+             verify(burping),
+             verify(vomiting),
              verify(bloating).
 
 /* how to ask questions */
