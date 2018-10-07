@@ -43,7 +43,8 @@ symptom(peeling_skin,scald).
 symptom(increased_thirst,diabetes_mellitus).
 symptom(frequent_urination,diabetes_mellitus).
 symptom(extreme_hunger,diabetes_mellitus).
-symptom().
+symptom(muscle_aches, disease).
+symptom(fatigue, disease).
 symptom(unknown).
 
 medicine(tiffy, cold).
@@ -59,6 +60,6 @@ medicine(Chlorpheniramine,urticaria).
 medicine(triptans,migraine).
 medicine(prevacid,dyspepsia).
 medicine(burnol_plus,scald).
-medicine(insulin_injecton).
+medicine(insulin_injecton, disease).
 medicine(unknown).
 
