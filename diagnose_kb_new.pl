@@ -16,6 +16,7 @@ hypothesize(cold)     :- cold, !.
 hypothesize(diarrhea) :- diarrhea, !.
 # hypothesize(flu)      :- flu.
 # hypothesize(cholera)  :- cholera.
+hypothesize(aphthous_ulcer):- aphthous_ulcer, !.
 hypothesize(unknown).             /* no diagnosis */
 
 /* disease identification rules */
